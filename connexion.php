@@ -26,10 +26,10 @@
                 <?php
                 include 'function.php';
                 session_start();
-                if(!empty($_SESSION['prenom'])){
-                    $prenom = $_SESSION['prenom']
-                    echo htmlspecialchars($prenom);
-                }
+                // if(!empty($_SESSION['prenom'])){
+                //     $prenom = $_SESSION['prenom'];
+                //     echo htmlspecialchars($prenom);
+                // }
                 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     echo '
                     <form action="connexion.php" method="post">

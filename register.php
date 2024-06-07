@@ -13,7 +13,7 @@
         <header>
             <nav>
                 <section class="Embed">
-                    <a href="index.html"><img src="./Images/logo.png" alt=""></a>
+                    <a href="index.php"><img src="./Images/logo.png" alt=""></a>
                 </section>
                 <section class="Navigation">
                     <img src="#" alt=""><a href="connexion.php">Connexion</a>
@@ -25,7 +25,7 @@
         <main>        
             <?php
             if(!empty($_SESSION['prenom'])){
-                $prenom = $_SESSION['prenom']
+                $prenom = $_SESSION['prenom'];
                 echo htmlspecialchars($prenom);
             } 
             if (!isset($_POST['submit'])) {

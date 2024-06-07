@@ -37,9 +37,9 @@
     </main>
     <footer>
         <div class="summary">
-            <a href="#">Github</a>
-            <a href="#">LaPlateforme</a>
-            <a href="#">Linkedin</a>
+            <a href="https://github.com/antony-lucide">Github</a>
+            <a href="https://laplateforme.io/">LaPlateforme</a>
+            <a href="https://www.linkedin.com/in/antony-lucide/">Linkedin</a>
             <a href="#">SiteFan V-Rising</a>
         </div>
     </footer>
