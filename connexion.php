@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion</title>
 </head>
     <body>
         <header>
@@ -54,7 +54,7 @@
                         die("Connection failed: " . $db->connect_error);
                     }
 
-                    $stmt = $db->prepare('SELECT id, password FROM utilisateurs WHERE login=?');
+                    $stmt = $db->prepare('SELECT id, prenom, password FROM utilisateurs WHERE login=?');
 
                     if ($stmt === false) {
                         die('Prepare failed: ' . $db->error);
@@ -62,12 +62,13 @@
 
                     $stmt->bind_param('s', $login);
                     $stmt->execute();
-                    $stmt->bind_result($id, $hashed_password);
+                    $stmt->bind_result($id,$prenom,$hashed_password);
 
                     if ($stmt->fetch()) {
                         //Mon Admin était un utilisateur non crypté donc la condition ne marcher point
                         if (password_verify($password, $hashed_password)) {
                             $_SESSION['id'] = $id;
+                            $_SESSION['prenom'] = $prenom;
                             echo "Login successful";
 
                             // Si mon users est admin, alors redirection sur cette page

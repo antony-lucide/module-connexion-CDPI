@@ -13,23 +13,29 @@
     <header>
         <nav>
             <section class="Embed">
-                <a href="index.html"><img src="./Images/logo.png" alt=""></a>
+                <a href="index.php"><img src="./Images/logo.png" alt=""></a>
             </section>
             <section class="Navigation">
-                <img src="#" alt=""><a href="connexion.php">Connexion</a>
-                <img src="#" alt=""><a href="register.php">Register</a>
-                <img src="#" alt=""><a href="#">Admin</a>              
+                <?php
+                session_start(); // Make sure to start the session
+                if (!empty($_SESSION['prenom'])) {
+                    $prenom = $_SESSION['prenom'];
+                    echo "<a href='profil.php'>" . htmlspecialchars($prenom) . "</a>";
+                    echo "<a href='logout.php'>Deconnexion</a>";
+                    // Check if the user is admin
+                    if ($_SESSION['id'] === 1) {
+                        echo "<a href='admin.php'>Admin</a>";
+                    }
+                } else {
+                    echo '
+                        <img src="#" alt=""><a href="connexion.php">Connexion</a>
+                        <img src="#" alt=""><a href="register.php">Register</a>';
+                }
+                ?>
             </section>
         </nav>
     </header>
     <main>
-        <?php 
-            session_start();
-            if(isset($_SESSION['prenom'])){
-                $name = $_SESSION['prenom'];
-                echo  htmlspecialchars($name);
-            }
-        ?>
         <img src="./Images/font.png" alt="">
         <h1>Bienvenue sur Module de Connexion !</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt doloremque voluptatibus adipisci id ratione corporis impedit quis, 

@@ -16,18 +16,23 @@
                     <a href="index.php"><img src="./Images/logo.png" alt=""></a>
                 </section>
                 <section class="Navigation">
-                    <img src="#" alt=""><a href="connexion.php">Connexion</a>
-                    <img src="#" alt=""><a href="register.php">Register</a>
-                    <img src="#" alt=""><a href="#">Admin</a>              
+                    <?php
+                    session_start(); // Make sure to start the session
+                    if (!empty($_SESSION['prenom'])) {
+                        $prenom = $_SESSION['prenom'];
+                        echo "<a href='profil.php'>" . htmlspecialchars($prenom) . "</a>";
+                    } else {
+                        echo '
+                            <img src="#" alt=""><a href="connexion.php">Connexion</a>
+                            <img src="#" alt=""><a href="register.php">Register</a>
+                            <img src="#" alt=""><a href="#">Admin</a>';
+                    }
+                    ?>
                 </section>
             </nav>
         </header>
         <main>        
             <?php
-            if(!empty($_SESSION['prenom'])){
-                $prenom = $_SESSION['prenom'];
-                echo htmlspecialchars($prenom);
-            } 
             if (!isset($_POST['submit'])) {
                 echo '
                 <form action="register.php" method="post">
