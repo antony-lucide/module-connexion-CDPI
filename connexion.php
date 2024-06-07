@@ -16,9 +16,9 @@
                     <a href="index.html"><img src="./Images/logo.png" alt=""></a>
                 </section>
                 <section class="Navigation">
-                    <img src="#" alt=""><a href="subway.html">Connexion</a>
+                    <img src="#" alt=""><a href="connexion.php">Connexion</a>
                     <img src="#" alt=""><a href="register.php">Register</a>
-                    <img src="#" alt=""><a href="Geomatry.html">Admin</a>              
+                    <img src="#" alt=""><a href="#">Admin</a>              
                 </section>
             </nav>
         </header>
@@ -26,7 +26,10 @@
                 <?php
                 include 'function.php';
                 session_start();
-
+                if(!empty($_SESSION['prenom'])){
+                    $prenom = $_SESSION['prenom']
+                    echo htmlspecialchars($prenom);
+                }
                 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     echo '
                     <form action="connexion.php" method="post">
